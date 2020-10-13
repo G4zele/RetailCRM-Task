@@ -13,35 +13,21 @@ cfg = {
         'active':True,
         'name' : 'Сервисные программы и Аксессуары',
         'clientId':'10',
-        'baseUrl' : 'http://80.76.42.209:5000/',
+        'baseUrl' : 'http://80.76.42.209:5000',
         'actions' :
         {
-            'accessories' : 'accessories?acessorie=',
-            'service'  : 'service'
+            'accessories' : '/accessories?accessorie=',
+            'service'  : '/service'
         },
-        'availableCountries' : 
+        'integrations/recommendation/modes':
         {
-                'rus',
-                'usa'
-        },
-        'integrations/recommendation':
-        {
-            'modes' :
-                {       'code':'access',
-                        'names' : 
-                                {
-                                   'ru' : 'Аксессуары',
-                                   'en' : 'Accessories',
-                                   'es' : ''
-                                },
-                        'code':'access',
-                        'names' : 
-                                {
-                                   'ru' : 'Аксессуары',
-                                   'en' : 'Accessories',
-                                   'es' : ''
-                                },   
-                }   
+                'code':'access',
+                'names' : 
+                        {
+                           'ru' : 'Аксессуары',
+                           'en' : 'Accessories',
+                           'es' : ''
+                        } 
         }
 }
 result = client.integration_module_edit(cfg)
