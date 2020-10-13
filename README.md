@@ -1,4 +1,1 @@
-"# RetailCRM-Task"\n\r
-main.py - Файл серврвера для обработки поступающих запросов\n
-workretailcrm.py - Файл для создания модуля\n
-testapiwork - тестовый файл, который был использован для понимания того, как использовать API RetailCrm\n
+"# RetailCRM-Task"
