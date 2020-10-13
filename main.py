@@ -15,8 +15,7 @@ def service():
 @app.route('/accessories')
 def accessories():
     site = 'example-com' 
-    Product_name = 'Чехол' + ' ' + request.args.get('accessorie')
-    print(request.args.get('accessorie'))
+    Product_name = 'Чехол' + ' ' + request.args.get('accessorie')+','
     result = client.products({'name':Product_name})
     return result._Response__response_body
 if __name__ == "__main__":

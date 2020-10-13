@@ -7,42 +7,44 @@ import json
 client = retailcrm.v5('https://popova.retailcrm.ru', 'h1iKk1Sb0AaM66Ms86mXh7pgMaDz6wrN')
 site = 'example-com'
 
-mod = {
-        'code':'testd', 
-        'name' : 'Аксессуары и сервисные программы',
-        'baseUrl' : 'http://127.0.0.1:8000',
+cfg = {
+        'code':'testd',
+        'integrationCode':'testd',
+        'active':True,
+        'name' : 'Сервисные программы и Аксессуары',
         'clientId':'10',
-        '/integrations/recommendation/modes':{
+        'baseUrl' : 'http://80.76.42.209:5000/',
+        'actions' :
+        {
+            'accessories' : 'accessories?acessorie=',
+            'service'  : 'service'
+        },
+        'availableCountries' : 
+        {
+                'rus',
+                'usa'
+        },
+        'integrations/recommendation':
+        {
+            'modes' :
+                {       'code':'access',
+                        'names' : 
+                                {
+                                   'ru' : 'Аксессуары',
+                                   'en' : 'Accessories',
+                                   'es' : ''
+                                },
                         'code':'access',
-                        'names': 
-                        [   
-                            {'ru' : 'Сервисные программы',
-                            'en' : 'Service programs',
-                            'es' : ''}
-                        ]
+                        'names' : 
+                                {
+                                   'ru' : 'Аксессуары',
+                                   'en' : 'Accessories',
+                                   'es' : ''
+                                },   
+                }   
         }
 }
-                    #{
-                    #    'code':'access',
-                    #    'names' : 
-                    #            {
-                    #               'ru' : 'Аксессуары',
-                    #               'en' : 'Accessories',
-                    #               'es' : ''
-                    #            },
-                    #}
-
-        #'actions' : [
-        #                {
-        #                    'mpartner':'partner.py',
-        #                        
-        #                },
-        #                {
-        #                    'maccess':'access.py',
-        #                }
-        #            ],
-
-result = client.integration_module_edit(mod)
+result = client.integration_module_edit(cfg)
 print(result._Response__response_body)
 clientid = client.integration_module('testd')
 print(clientid._Response__response_body)
