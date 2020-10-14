@@ -7,27 +7,54 @@ import json
 client = retailcrm.v5('https://popova.retailcrm.ru', 'h1iKk1Sb0AaM66Ms86mXh7pgMaDz6wrN')
 site = 'example-com'
 
+
 cfg = {
         'code':'testd',
         'integrationCode':'testd',
         'active':True,
         'name' : 'Сервисные программы и Аксессуары',
         'clientId':'10',
-        'baseUrl' : 'http://80.76.42.209:5000',
-        'actions' :
+        'baseUrl' : 'http://80.76.42.209:5000/',
+        'accountUrl' : 'https://popova.retailcrm.ru/',
+        'actions':
         {
-            'accessories' : '/accessories?accessorie=',
-            'service'  : '/service'
+                'activity' :
+                {
+                }
         },
-        'integrations/recommendation/modes':
+        'integrations':
         {
-                'code':'access',
-                'names' : 
+                'recommendation':
+                {
+                        'addDefaultModes':True,
+                        'modes':
                         {
-                           'ru' : 'Аксессуары',
-                           'en' : 'Accessories',
-                           'es' : ''
-                        } 
+                                'Service': 
+                                {
+                                        'code':'serv',
+                                        'names':
+                                        {
+                                                'en':'Service programs',
+                                                'ru':'Сервисные программы',
+                                                'es':''
+                                        }
+                                },
+                                'Accessories':
+                                {
+                                        'code':'access',
+                                        'names':
+                                        {
+                                                'en':'Accessories',
+                                                'ru':'Аксессуары',
+                                                'es':''
+                                        }
+                                }
+                        },
+                        'actions':
+                        {
+                                'recommendation' : 'testd',
+                        }
+                }
         }
 }
 result = client.integration_module_edit(cfg)
