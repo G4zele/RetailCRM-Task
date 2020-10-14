@@ -34,9 +34,9 @@ def service():
         return {'by':'id', 'ids' : ids}
     elif (mode == 'serv'):
         result = client.products({'name':'гарантии'})
-        a.ids = []
+        ids = []
         n = 0
-        while n < 20:
+        while n < 7:
             ids.append(result._Response__response_body['products'][n]['id'])
             n += 1
         return {'by':'id', 'ids' : ids}
