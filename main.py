@@ -28,7 +28,7 @@ def service():
         result = client.products({'name':Product_name})
         ids = []
         n = 0
-        while n < result._Response__response_body['pagination']['totalCount']:
+        while n < 20:
             ids.append(result._Response__response_body['products'][n]['id'])
             n += 1
         return {'by':'id', 'ids' : ids}
@@ -36,7 +36,7 @@ def service():
         result = client.products({'name':'гарантии'})
         a.ids = []
         n = 0
-        while n < result._Response__response_body['pagination']['totalCount']:
+        while n < 20:
             ids.append(result._Response__response_body['products'][n]['id'])
             n += 1
         return {'by':'id', 'ids' : ids}
