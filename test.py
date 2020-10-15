@@ -29,8 +29,8 @@ if (mode == 'access'):
     print(ids)
 elif (mode == 'serv'):
     result = client.products({'externalId':exID})
-    Product_name = result._Response__response_body['products'][0]['name']
-    if Product_name.find('Apple') > -1:
+    Product_name = result._Response__response_body['products'][0]['url']
+    if Product_name.find('re-store.ru/catalog/') > -1:
         result = client.products({'name':'гарантии'})
         ids = []
         n = 0
