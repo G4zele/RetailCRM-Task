@@ -24,20 +24,23 @@ def service():
             tmp += Product_name[n]
             n += 1
         Product_name = tmp
-        Product_name = 'Чехол ' + Product_name
-        result = client.products({'name':Product_name})
-        ids = []
-        n = 0
-        while n < len(result._Response__response_body['products']):
-            ids.append(result._Response__response_body['products'][n]['id'])
-            n += 1
-        return {'by':'id','ids':ids}
+        if Product_name.find('iPhone') > -1:
+            Product_name = 'Чехол ' + Product_name
+            result = client.products({'name':Product_name})
+            ids = []
+            n = 0
+            while n < len(result._Response__response_body['products']):
+                ids.append(result._Response__response_body['products'][n]['id'])
+                n += 1
+            return {'by':'id','ids':ids}
+        else:
+             return {'by':'id','ids':''}
     elif (mode == 'service'):
         result = client.products({'name':'гарантии'})
         ids = []
         n = 0
         while n < len(result._Response__response_body['products']):
-            ids.append(result._Response__response_body['products'][n]['offers'][0]['id'])
+            ids.append(result._Response__response_body['products'][n]['id'])
             n += 1
         return {'by':'id','ids':ids}
     
