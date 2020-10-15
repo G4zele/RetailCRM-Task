@@ -13,9 +13,10 @@ def service():
     ID = request.args.get('ids%5B0%5D')
     exID = request.args.get('externalIds%5B0%5D')
     mode = request.args.get('mode')
+    return exID
     if (mode == 'access'):
         result = client.products({'externalId':exID})
-        return exID
+        
         #Product_name = result._Response__response_body['products'][0]['name']
         #Product_name = (Product_name[Product_name.find(" ") + 1 : ])
         #point = Product_name.find(",") + 1
