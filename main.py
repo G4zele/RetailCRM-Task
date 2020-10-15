@@ -10,8 +10,8 @@ def hello_world():
 
 @app.route('/testd')
 def service():
-    ID = request.args.get('ids')
-    exID = request.args.get('externalIds')
+    ID = request.args.get('ids[0]')
+    exID = request.args.get('externalIds[0]')
     mode = request.args.get('mode')
     return {'ID': ID,'exID':exID,'mode':mode}
     if (mode == 'access'):
