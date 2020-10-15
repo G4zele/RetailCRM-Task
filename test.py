@@ -28,12 +28,15 @@ if (mode == 'access'):
         n += 1
     print(ids)
 elif (mode == 'serv'):
-    result = client.products({'name':'гарантии'})
-    ids = []
-    n = 0
-    while n < len(result._Response__response_body['products']):
-        ids.append(result.result._Response__response_body['products'][n]['offers'][0]['id'])
-        n += 1
-    print(ids)
+    result = client.products({'externalId':exID})
+    Product_name = result._Response__response_body['products'][0]['name']
+    if Product_name.find('Apple') > -1:
+        result = client.products({'name':'гарантии'})
+        ids = []
+        n = 0
+        while n < len(result._Response__response_body['products']):
+            ids.append(result._Response__response_body['products'][n]['id'])
+            n += 1
+        print(ids)
 
    

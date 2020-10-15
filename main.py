@@ -38,7 +38,7 @@ def service():
     elif (mode == 'service'):
         result = client.products({'externalId':exID})
         Product_name = result._Response__response_body['products'][0]['name']
-        if Product_name.find('apple') > -1:
+        if Product_name.find('Apple') > -1:
             result = client.products({'name':'гарантии'})
             ids = []
             n = 0
