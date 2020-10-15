@@ -5,9 +5,9 @@ import time
 import json
 
 client = retailcrm.v5('https://popova.retailcrm.ru', 'h1iKk1Sb0AaM66Ms86mXh7pgMaDz6wrN')
-ID = 0
-exID = 1515147
-mode = 'serv'
+ID = '921'
+exID = '1515147'
+mode = 'access'
 if (mode == 'access'):
     result = client.products({'externalId':exID})
     Product_name = result._Response__response_body['products'][0]['name']
@@ -23,15 +23,17 @@ if (mode == 'access'):
     result = client.products({'name':Product_name})
     ids = []
     n = 0
-    while n < 20:
+    while n < len(result._Response__response_body['products']):
         ids.append(result._Response__response_body['products'][n]['id'])
         n += 1
-    print( {'by':'id', 'ids' : ids})
+    print(ids)
 elif (mode == 'serv'):
     result = client.products({'name':'гарантии'})
     ids = []
     n = 0
-    while n < 7:
+    while n < len(result._Response__response_body['products']):
         ids.append(result._Response__response_body['products'][n]['id'])
         n += 1
-    print({'by':'id', 'ids' : ids})
+    print(ids)
+
+   
