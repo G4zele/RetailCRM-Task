@@ -38,15 +38,7 @@ def service():
     elif (mode == 'service'):
         result = client.products({'externalId':exID})
         Product_name = result._Response__response_body['products'][0]['name']
-        Product_name = (Product_name[Product_name.find(" ") + 1 : ])
-        point = Product_name.find(",") + 1
-        n = 0
-        tmp = ""
-        while n < point:
-            tmp += Product_name[n]
-            n += 1
-        Product_name = tmp
-        if Product_name.find('iPhone') > -1:
+        if Product_name.find('apple') > -1:
             result = client.products({'name':'гарантии'})
             ids = []
             n = 0
