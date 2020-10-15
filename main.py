@@ -13,27 +13,25 @@ def service():
     ID = request.args.get('ids[0]')
     exID = request.args.get('externalIds[0]')
     mode = request.args.get('mode')
-    return {'ID': ID,'exID':exID,'mode':mode}
     if (mode == 'access'):
         result = client.products({'externalId':exID})
-        
-        #Product_name = result._Response__response_body['products'][0]['name']
-        #Product_name = (Product_name[Product_name.find(" ") + 1 : ])
-        #point = Product_name.find(",") + 1
-        #n = 0
-        #tmp = ""
-        #while n < point:
-        #    tmp += Product_name[n]
-        #    n += 1
-        #Product_name = tmp
-        #Product_name = 'Чехол ' + Product_name
-        #result = client.products({'name':Product_name})
-        #ids = []
-        #n = 0
-        #while n < len(result._Response__response_body['products']):
-        #    ids.append(result._Response__response_body['products'][n]['id'])
-        #    n += 1
-        #return {'id':ids}
+        Product_name = result._Response__response_body['products'][0]['name']
+        Product_name = (Product_name[Product_name.find(" ") + 1 : ])
+        point = Product_name.find(",") + 1
+        n = 0
+        tmp = ""
+        while n < point:
+            tmp += Product_name[n]
+            n += 1
+        Product_name = tmp
+        Product_name = 'Чехол ' + Product_name
+        result = client.products({'name':Product_name})
+        ids = []
+        n = 0
+        while n < len(result._Response__response_body['products']):
+            ids.append(result._Response__response_body['products'][n]['id'])
+            n += 1
+        return {'id':ids}
     elif (mode == 'serv'):
         result = client.products({'name':'гарантии'})
         ids = []
