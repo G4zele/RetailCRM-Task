@@ -31,7 +31,7 @@ cfg = {
                         {
                                 'Service': 
                                 {
-                                        'code':'serv',
+                                        'code':'service',
                                         'names':
                                         {
                                                 'en':'Service programs',
