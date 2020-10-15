@@ -14,6 +14,7 @@ def service():
     exID = request.args.get('externalIds%5B0%5D')
     mode = request.args.get('mode')
     if (mode == 'access'):
+        print('#############################################')
         result = client.products({'externalId':exID})
         print(result._Response__response_body)
         Product_name = result._Response__response_body['products'][0]['name']
