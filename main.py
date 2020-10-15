@@ -41,7 +41,7 @@ def service():
         while n < len(result._Response__response_body['products']):
             ids.append(result._Response__response_body['products'][n]['id'])
             n += 1
-        return ids
+        return {'id':ids}
 
    
     
