@@ -31,7 +31,7 @@ elif (mode == 'serv'):
     result = client.products({'name':'гарантии'})
     ids = []
     n = 0
-    while n < 4:
+    while n < 7:
         ids.append(result._Response__response_body['products'][n]['id'])
         n += 1
     print({'by':'id', 'ids' : ids})
