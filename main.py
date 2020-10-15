@@ -36,13 +36,26 @@ def service():
         else:
              return {'by':'id','ids':''}
     elif (mode == 'service'):
-        result = client.products({'name':'гарантии'})
-        ids = []
+        result = client.products({'externalId':exID})
+        Product_name = result._Response__response_body['products'][0]['name']
+        Product_name = (Product_name[Product_name.find(" ") + 1 : ])
+        point = Product_name.find(",") + 1
         n = 0
-        while n < len(result._Response__response_body['products']):
-            ids.append(result._Response__response_body['products'][n]['id'])
+        tmp = ""
+        while n < point:
+            tmp += Product_name[n]
             n += 1
-        return {'by':'id','ids':ids}
+        Product_name = tmp
+        if Product_name.find('iPhone') > -1:
+            result = client.products({'name':'гарантии'})
+            ids = []
+            n = 0
+            while n < len(result._Response__response_body['products']):
+                ids.append(result._Response__response_body['products'][n]['id'])
+                n += 1
+            return {'by':'id','ids':ids}
+        else:
+             return {'by':'id','ids':''}
     
 if __name__ == "__main__":
     app.run(debug=True)
