@@ -10,9 +10,9 @@ def hello_world():
 
 @app.route('/testd')
 def service():
-    ID = request.args.get('ids%5B0%5D=')
-    exID = request.args.get('externalIds%5B0%5D=')
-    mode = request.args.get('mode=')
+    ID = request.args.get('ids%5B0%5D')
+    exID = request.args.get('externalIds%5B0%5D')
+    mode = request.args.get('mode')
     if (mode == 'access'):
         result = client.products({'externalId':exID})
         Product_name = result._Response__response_body['products'][0]['name']
